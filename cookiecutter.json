@@ -1,0 +1,8 @@
+{
+  "outputDir": "aws-sam-pipeline",
+  "stack_name": "",
+  "main_git_branch": "",
+  "qa_pipeline_execution_role": "",
+  "qa_cloudformation_execution_role": "",
+  "qa_artifacts_bucket": ""
+}
