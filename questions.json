@@ -25,74 +25,74 @@
       "kind": "info"
     },
     {
-      "key": "stage_name",
+      "key": "qa_stage_name",
       "question": "Select an index or enter the stage 1's configuration name (as provided during the bootstrapping)",
       "isRequired": true
     },
     {
-      "key": "stack_name",
+      "key": "qa_stack_name",
       "question": "What is the sam application stack name for stage 1?",
       "isRequired": true,
       "default": "sam-app"
     },
     {
-      "key": "pipeline_execution_role",
+      "key": "qa_pipeline_execution_role",
       "question": "What is the pipeline execution role ARN for stage 1?",
       "isRequired": true,
       "allowAutofill": true,
       "default": {
         "keyPath": [
           {
-            "valueOf": "stage_name"
+            "valueOf": "qa_stage_name"
           },
-          "pipeline_execution_role"
+          "qa_pipeline_execution_role"
         ]
       }
     },
     {
-      "key": "cloudformation_execution_role",
+      "key": "qa_cloudformation_execution_role",
       "question": "What is the CloudFormation execution role ARN for stage 1?",
       "isRequired": true,
       "allowAutofill": true,
       "default": {
         "keyPath": [
           {
-            "valueOf": "stage_name"
+            "valueOf": "qa_stage_name"
           },
-          "cloudformation_execution_role"
+          "qa_cloudformation_execution_role"
         ]
       }
     },
     {
-      "key": "artifacts_bucket",
+      "key": "qa_artifacts_bucket",
       "question": "What is the S3 bucket name for artifacts for stage 1?",
       "isRequired": true,
       "allowAutofill": true,
       "default": {
         "keyPath": [
           {
-            "valueOf": "stage_name"
+            "valueOf": "qa_stage_name"
           },
           "artifacts_bucket"
         ]
       }
     },
     {
-      "key": "region",
+      "key": "qa_region",
       "question": "What is the AWS region for stage 1?",
       "isRequired": true,
       "allowAutofill": true,
       "default": {
         "keyPath": [
           {
-            "valueOf": "stage_name"
+            "valueOf": "qa_stage_name"
           },
           "region"
         ]
       }
     },
     {
-      "key": "message_testing_stage_configured",
+      "key": "message_qa_stage_configured",
       "question": "Stage 1 configured successfully.\n",
       "kind": "info"
     }
