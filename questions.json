@@ -33,7 +33,14 @@
       "key": "qa_stack_name",
       "question": "What is the sam application stack name for stage 1?",
       "isRequired": true,
-      "default": "sam-app"
+      "default": {
+        "keyPath": [
+          {
+            "valueOf": "qa_stage_name"
+          },
+          "stack_name"
+        ]
+      }
     },
     {
       "key": "qa_pipeline_execution_role",
@@ -45,7 +52,7 @@
           {
             "valueOf": "qa_stage_name"
           },
-          "qa_pipeline_execution_role"
+          "pipeline_execution_role"
         ]
       }
     },
@@ -59,7 +66,7 @@
           {
             "valueOf": "qa_stage_name"
           },
-          "qa_cloudformation_execution_role"
+          "cloudformation_execution_role"
         ]
       }
     },
