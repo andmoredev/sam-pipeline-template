@@ -13,11 +13,15 @@ on:
         required: true
         type: string
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   portman:
     name: Run Portman
     runs-on: ubuntu-latest
-    environment: {{ '${{ inputs.ENVIRONMENT }}' }}
+    environment: ${{ inputs.ENVIRONMENT }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -29,10 +33,7 @@ jobs:
           role-session-name: testing-packaging
           role-duration-seconds: 3600
           role-skip-session-tagging: true
-      - run: npm install -g @apideck/portman
-      - run: npm ci
       - name: Test API
         run: |
-          aws cloudformation describe-stacks --stack-name task-service-api --query "Stacks[0].Outputs[?OutputKey=='ApiURL'].OutputValue" --output text
-          npm run set-portman-config ./portman/portman-config.json ./portman/portman-cli.json {{ '${{ inputs.ENVIRONMENT }}' }}
-          npm run portman
+          url=$(aws cloudformation describe-stacks --stack-name {{ cookiecutter.stack_name }} --query "Stacks[0].Outputs[?OutputKey=='ApiURL'].OutputValue" --output text)
+          npx @apideck/portman --baseUrl $url --cliOptionsFile portman/portman-cli.json
