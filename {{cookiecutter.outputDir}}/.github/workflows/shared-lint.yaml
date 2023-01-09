@@ -10,8 +10,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - run: npm install -g @stoplight/spectral-cli
-      - run: npm run spectral
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "**/*openapi.yaml"
+      - name: Lint OpenAPI
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: |
+          npm install -g @stoplight/spectral-cli
+          spectral lint **/*openapi.yaml
 
   eslint:
     name: Lint JS
