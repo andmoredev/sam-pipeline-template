@@ -30,7 +30,7 @@
       "isRequired": true
     },
     {
-      "key": "qa_stack_name",
+      "key": "stack_name",
       "question": "What is the sam application stack name for stage 1?",
       "isRequired": true,
       "default": {
