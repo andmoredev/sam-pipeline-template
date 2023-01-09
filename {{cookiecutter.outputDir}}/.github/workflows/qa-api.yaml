@@ -45,4 +45,5 @@ jobs:
     with:
       ENVIRONMENT : QA
       AWS_REGION: {{ '${{ matrix.region }}' }}
+      PIPELINE_EXECUTION_ROLE: {{ cookiecutter.qa_pipeline_execution_role }}
     secrets: inherit
