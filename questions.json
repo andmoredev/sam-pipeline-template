@@ -25,82 +25,68 @@
       "kind": "info"
     },
     {
-      "key": "qa_stage_name",
-      "question": "Select an index or enter the stage 1's configuration name (as provided during the bootstrapping)",
+      "key": "stage_name",
+      "question": "Enter the stages configuration name (as provided during the bootstrapping)",
       "isRequired": true
     },
     {
       "key": "stack_name",
-      "question": "What is the sam application stack name for stage 1?",
+      "question": "What is the sam application stack name?",
       "isRequired": true,
       "default": {
         "keyPath": [
           {
-            "valueOf": "qa_stage_name"
+            "valueOf": "stage_name"
           },
           "stack_name"
         ]
       }
     },
     {
-      "key": "qa_pipeline_execution_role",
-      "question": "What is the pipeline execution role ARN for stage 1?",
+      "key": "pipeline_execution_role",
+      "question": "What is the pipeline execution role ARN?",
       "isRequired": true,
       "allowAutofill": true,
       "default": {
         "keyPath": [
           {
-            "valueOf": "qa_stage_name"
+            "valueOf": "stage_name"
           },
           "pipeline_execution_role"
         ]
       }
     },
     {
-      "key": "qa_cloudformation_execution_role",
-      "question": "What is the CloudFormation execution role ARN for stage 1?",
+      "key": "cloudformation_execution_role",
+      "question": "What is the CloudFormation execution role ARN?",
       "isRequired": true,
       "allowAutofill": true,
       "default": {
         "keyPath": [
           {
-            "valueOf": "qa_stage_name"
+            "valueOf": "stage_name"
           },
           "cloudformation_execution_role"
         ]
       }
     },
     {
-      "key": "qa_artifacts_bucket",
-      "question": "What is the S3 bucket name for artifacts for stage 1?",
+      "key": "artifacts_bucket",
+      "question": "What is the S3 bucket name for artifacts?",
       "isRequired": true,
       "allowAutofill": true,
       "default": {
         "keyPath": [
           {
-            "valueOf": "qa_stage_name"
+            "valueOf": "stage_name"
           },
           "artifacts_bucket"
         ]
       }
     },
     {
-      "key": "qa_region",
-      "question": "What is the AWS region for stage 1?",
-      "isRequired": true,
-      "allowAutofill": true,
-      "default": {
-        "keyPath": [
-          {
-            "valueOf": "qa_stage_name"
-          },
-          "region"
-        ]
-      }
-    },
-    {
-      "key": "message_qa_stage_configured",
-      "question": "Stage 1 configured successfully.\n",
+      "key": "message_stage_configured",
+      "question": "Configured successfully.\n",
       "kind": "info"
     }
   ]

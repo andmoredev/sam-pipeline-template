@@ -30,9 +30,9 @@ jobs:
     with:
       ENVIRONMENT: QA
       AWS_REGION: {{ '${{ matrix.region }}' }}
-      PIPELINE_EXECUTION_ROLE: {{ cookiecutter.qa_pipeline_execution_role }}
-      CLOUDFORMATION_EXECUTION_ROLE: {{ cookiecutter.qa_cloudformation_execution_role }}
-      ARTIFACTS_BUCKET_NAME: {{ cookiecutter.qa_artifacts_bucket }}
+      PIPELINE_EXECUTION_ROLE: {{ cookiecutter.pipeline_execution_role }}
+      CLOUDFORMATION_EXECUTION_ROLE: {{ cookiecutter.cloudformation_execution_role }}
+      ARTIFACTS_BUCKET_NAME: {{ cookiecutter.artifacts_bucket }}
     secrets: inherit
 
   test-api:
@@ -45,5 +45,5 @@ jobs:
     with:
       ENVIRONMENT : QA
       AWS_REGION: {{ '${{ matrix.region }}' }}
-      PIPELINE_EXECUTION_ROLE: {{ cookiecutter.qa_pipeline_execution_role }}
+      PIPELINE_EXECUTION_ROLE: {{ cookiecutter.pipeline_execution_role }}
     secrets: inherit
