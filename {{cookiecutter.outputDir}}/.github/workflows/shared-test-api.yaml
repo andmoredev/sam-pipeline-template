@@ -21,7 +21,7 @@ jobs:
   portman:
     name: Run Portman
     runs-on: ubuntu-latest
-    environment: ${{ inputs.ENVIRONMENT }}
+    environment: {{ '${{ inputs.ENVIRONMENT }}' }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
