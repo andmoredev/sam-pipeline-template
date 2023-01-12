@@ -2,7 +2,7 @@
   "outputDir": "",
   "stack_name": "",
   "main_git_branch": "",
-  "aws_region": "",
+  "region": "",
   "pipeline_execution_role": "",
   "cloudformation_execution_role": "",
   "artifacts_bucket": ""
