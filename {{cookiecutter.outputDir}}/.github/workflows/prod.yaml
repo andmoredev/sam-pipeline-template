@@ -25,7 +25,7 @@ jobs:
     needs: [lint, unit-tests]
     uses: ./.github/workflows/shared-deploy.yaml
     with:
-      ENVIRONMENT: {{ cookiecutter.stage_name }}
+      ENVIRONMENT: prod
       AWS_REGION: {{ cookiecutter.aws_region }}
       PIPELINE_EXECUTION_ROLE: {{ cookiecutter.pipeline_execution_role }}
       CLOUDFORMATION_EXECUTION_ROLE: {{ cookiecutter.cloudformation_execution_role }}
@@ -37,7 +37,7 @@ jobs:
     needs: [deploy-resources]
     uses: ./.github/workflows/shared-test-api.yaml
     with:
-      ENVIRONMENT : {{ cookiecutter.stage_name }}
+      ENVIRONMENT : prod
       AWS_REGION: {{ cookiecutter.aws_region }}
       PIPELINE_EXECUTION_ROLE: {{ cookiecutter.pipeline_execution_role }}
     secrets: inherit
