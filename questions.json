@@ -8,7 +8,12 @@
     {
       "key": "main_git_branch",
       "question": "What is the git branch used for deployments?",
-      "default": "main"
+      "default": {
+        "keyPath": [
+            "default",
+            "deployment_branch"
+        ]
+      }
     },
     {
       "key": "message_stage_name",
