@@ -24,12 +24,9 @@ jobs:
     name: Deploy SAM Resources
     needs: [lint, unit-tests]
     uses: ./.github/workflows/shared-deploy.yaml
-    strategy:
-      matrix:
-        region: ['us-east-1']
     with:
-      ENVIRONMENT: QA
-      AWS_REGION: {{ '${{ matrix.region }}' }}
+      ENVIRONMENT: {{ cookiecutter.stage_name }}
+      AWS_REGION: {{ cookiecutter.aws_region }}
       PIPELINE_EXECUTION_ROLE: {{ cookiecutter.pipeline_execution_role }}
       CLOUDFORMATION_EXECUTION_ROLE: {{ cookiecutter.cloudformation_execution_role }}
       ARTIFACTS_BUCKET_NAME: {{ cookiecutter.artifacts_bucket }}
@@ -39,11 +36,8 @@ jobs:
     name: Test API
     needs: [deploy-resources]
     uses: ./.github/workflows/shared-test-api.yaml
-    strategy:
-      matrix:
-        region: ['us-east-1']
     with:
-      ENVIRONMENT : QA
-      AWS_REGION: {{ '${{ matrix.region }}' }}
+      ENVIRONMENT : {{ cookiecutter.stage_name }}
+      AWS_REGION: {{ cookiecutter.aws_region }}
       PIPELINE_EXECUTION_ROLE: {{ cookiecutter.pipeline_execution_role }}
     secrets: inherit

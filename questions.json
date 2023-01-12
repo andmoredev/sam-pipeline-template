@@ -30,6 +30,18 @@
       "isRequired": true
     },
     {
+      "key": "region",
+      "question": "What is the AWS region?",
+      "isRequired": true,
+      "allowAutofill": true,
+      "default": {
+        "keyPath": [
+            { "valueOf": "stage_name"},
+            "region"
+        ]
+      }
+    },
+    {
       "key": "stack_name",
       "question": "What is the sam application stack name?",
       "isRequired": true,
