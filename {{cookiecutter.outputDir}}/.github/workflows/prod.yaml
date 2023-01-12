@@ -26,7 +26,7 @@ jobs:
     uses: ./.github/workflows/shared-deploy.yaml
     with:
       ENVIRONMENT: prod
-      AWS_REGION: {{ cookiecutter.aws_region }}
+      AWS_REGION: {{ cookiecutter.region }}
       PIPELINE_EXECUTION_ROLE: {{ cookiecutter.pipeline_execution_role }}
       CLOUDFORMATION_EXECUTION_ROLE: {{ cookiecutter.cloudformation_execution_role }}
       ARTIFACTS_BUCKET_NAME: {{ cookiecutter.artifacts_bucket }}
@@ -38,6 +38,6 @@ jobs:
     uses: ./.github/workflows/shared-test-api.yaml
     with:
       ENVIRONMENT : prod
-      AWS_REGION: {{ cookiecutter.aws_region }}
+      AWS_REGION: {{ cookiecutter.region }}
       PIPELINE_EXECUTION_ROLE: {{ cookiecutter.pipeline_execution_role }}
     secrets: inherit
