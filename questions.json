@@ -2,7 +2,7 @@
   "questions": [
     {
       "key": "intro",
-      "question": "\nThis template configures a pipeline that deploys a serverless application to a single stage.\n",
+      "question": "\nThis template configures a pipeline that deploys a serverless application to two stages.\n",
       "kind": "info"
     },
     {
