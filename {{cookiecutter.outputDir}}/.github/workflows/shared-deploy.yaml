@@ -24,34 +24,7 @@ permissions:
   contents: read
 
 jobs:
-  deploy-dynamodb:
-    name: Deploy dynamodb
-    runs-on: ubuntu-latest
-    environment: {{ '${{ inputs.ENVIRONMENT }}' }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.8"
-      - uses: aws-actions/setup-sam@v2
-      - run: sam build --template-file template-dynamodb.yaml
-      - name: Configure AWS
-        uses: aws-actions/configure-aws-credentials@v1-node16
-        with:
-          aws-region: {{ '${{ inputs.AWS_REGION }}' }}
-          role-to-assume: {{ '${{ inputs.PIPELINE_EXECUTION_ROLE }}' }}
-          role-session-name: testing-packaging
-          role-duration-seconds: 3600
-          role-skip-session-tagging: true
-      - name: Deploy
-        run: |
-          sam deploy --config-env dynamodb \
-          --s3-bucket {{ '${{ inputs.ARTIFACTS_BUCKET_NAME }}' }} \
-          --no-fail-on-empty-changeset \
-          --role-arn {{ '${{ inputs.CLOUDFORMATION_EXECUTION_ROLE }}' }}
-
-
-  build-and-deploy-api:
+  build-and-deploy:
     name: Build and Deploy SAM Application
     needs: [deploy-dynamodb]
     runs-on: ubuntu-latest
@@ -62,7 +35,7 @@ jobs:
         with:
           python-version: "3.8"
       - uses: aws-actions/setup-sam@v2
-      - run: sam build --template-file template-api.yaml
+      - run: sam build
       - name: Configure AWS
         uses: aws-actions/configure-aws-credentials@v1-node16
         with:
@@ -73,7 +46,7 @@ jobs:
           role-skip-session-tagging: true
       - name: Deploy
         run: |
-          sam deploy --config-env api \
+          sam deploy \
           --s3-bucket {{ '${{ inputs.ARTIFACTS_BUCKET_NAME }}' }} \
           --no-fail-on-empty-changeset \
           --role-arn {{ '${{ inputs.CLOUDFORMATION_EXECUTION_ROLE }}' }}

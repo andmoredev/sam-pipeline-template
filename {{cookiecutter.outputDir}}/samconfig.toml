@@ -1,14 +1,8 @@
 version = 0.1
-[api]
-[api.deploy]
-[api.deploy.parameters]
+[default]
+[default.deploy]
+[default.deploy.parameters]
 stack_name = "{{ cookiecutter.stack_name }}"
-capabilities = "CAPABILITY_IAM"
-
-[dynamodb]
-[dynamodb.deploy]
-[dynamodb.deploy.parameters]
-stack_name = "{{ cookiecutter.stack_name }}-dynamodb"
 capabilities = "CAPABILITY_IAM"
 
 [default.build]
